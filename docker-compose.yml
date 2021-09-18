@@ -1,0 +1,45 @@
+version: "3.8"
+
+services: 
+    nginx:
+        image: nginx
+        container_name: xiaoe_nginx
+        restart: always
+        ports: 
+            - "80:80"
+            - "81:81"
+            - "82:82"
+            - "83:83"
+            - "84:84"
+        environment: 
+            - TZ=Asia/Shanghai
+        depends_on: 
+            - "xiaoe_php"
+        volumes: 
+            - .\www:/usr/share/nginx/html
+            - .\nginx\nginx.conf:/etc/nginx/nginx.conf
+            - .\nginx\conf.d:/etc/nginx/conf.d
+            - .\nginx\log:/var/log/nginx
+        networks: 
+            - xiaoe_net
+
+    php:
+        image: fr34kyn01535/php7.1-fpm
+        container_name: xiaoe_php
+        restart: always
+        ports: 
+            - "9001:9000"
+        environment: 
+            - TZ=Asia/Shanghai
+        volumes:
+            - .\www:/www
+            - .\php\php.ini:/usr/local/etc/php/php.ini
+            - .\php\log:/usr/local/var/log
+            - .\data:/data
+        networks: 
+            - xiaoe_net
+
+networks: 
+    xiaoe_net:
+        name: xiaoe_net
+        driver: bridge
