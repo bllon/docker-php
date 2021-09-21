@@ -1,1 +1,0 @@
-{"log_at":"2021-08-03T05:12:27.155Z","level":"DEBUG","message":"logFrom","context":"{\"expireTime\":84,\"paymentType\":1,\"isTry\":false,\"resourceType\":2,\"piecePrice\":0}","channel":"reg_debug","module_name":"wechat_app_server","X-B3-SpanId":"23a503dc5591f447","X-B3-TraceId":"ab2c10f96a509403","X-B3-Flags":"0","X-B3-Sampled":"0","X-B3-ParentSpanId":"ab2c10f96a509403"}

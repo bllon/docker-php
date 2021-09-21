@@ -1,1 +1,0 @@
-{"log_at":"2021-08-18T02:18:33.306Z","level":"DEBUG","message":"logFrom","context":"{\"code\":2006,\"msg\":\"SQLSTATE[HY000] [2006] MySQL server has gone away\"}","channel":"error_handler","module_name":"wechat_app_server","X-B3-SpanId":"5805348d53e37978","X-B3-TraceId":"6ca9c91fd12178e8","X-B3-Flags":"0","X-B3-Sampled":"0","X-B3-ParentSpanId":"6ca9c91fd12178e8"}

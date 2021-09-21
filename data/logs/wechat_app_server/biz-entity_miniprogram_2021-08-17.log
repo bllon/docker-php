@@ -1,1 +1,0 @@
-{"log_at":"2021-08-17T03:40:28.622Z","level":"DEBUG","message":"logFrom","context":"{\"code\":4,\"msg\":\"no goods info from redis\",\"data\":\"\"}","channel":"entity_miniprogram","module_name":"wechat_app_server","X-B3-SpanId":"4ce776238e5d8091","X-B3-TraceId":"b2d6f5ece9f9e13e","X-B3-Flags":"0","X-B3-Sampled":"0","X-B3-ParentSpanId":"b2d6f5ece9f9e13e"}

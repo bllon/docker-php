@@ -1,0 +1,7 @@
+data/logs
+nginx/logs
+php56/log
+php71/log
+php72/log
+www/*
+!www/index.php

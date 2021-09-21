@@ -3,43 +3,67 @@ version: "3.8"
 services: 
     nginx:
         image: nginx
-        container_name: xiaoe_nginx
+        container_name: nginx
         restart: always
         ports: 
             - "80:80"
-            - "81:81"
-            - "82:82"
-            - "83:83"
-            - "84:84"
         environment: 
-            - TZ=Asia/Shanghai
-        depends_on: 
-            - "xiaoe_php"
+            - TZ=${TZ}
         volumes: 
-            - .\www:/usr/share/nginx/html
-            - .\nginx\nginx.conf:/etc/nginx/nginx.conf
-            - .\nginx\conf.d:/etc/nginx/conf.d
-            - .\nginx\log:/var/log/nginx
+            - ${APP_PATH}:/usr/share/nginx/html
+            - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf
+            - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d
+            - ${NGINX_LOG_DIR}:/var/log/nginx
         networks: 
-            - xiaoe_net
+            - default
 
-    php:
+    php71:
         image: fr34kyn01535/php7.1-fpm
-        container_name: xiaoe_php
+        container_name: php71
         restart: always
         ports: 
-            - "9001:9000"
+            - "9501:9000"
+        environment: 
+            - TZ=${TZ}
+        volumes:
+            - ${APP_PATH}:/www
+            - ${PHP71_CONF_FILE}:/usr/local/etc/php/php.ini
+            - ${PHP71_LOG_DIR}:/usr/local/var/log
+            - ${DATA_DIR}:/data
+        networks: 
+            - default
+    
+    php72:
+        image: binhle410/php7.2-fpm
+        container_name: php72
+        restart: always
+        ports: 
+            - "9502:9000"
         environment: 
             - TZ=Asia/Shanghai
         volumes:
-            - .\www:/www
-            - .\php\php.ini:/usr/local/etc/php/php.ini
-            - .\php\log:/usr/local/var/log
-            - .\data:/data
+            - ${APP_PATH}:/www
+            - ${PHP72_CONF_FILE}:/usr/local/etc/php/php.ini
+            - ${PHP72_LOG_DIR}:/usr/local/var/log
+            - ${DATA_DIR}:/data
         networks: 
-            - xiaoe_net
+            - default
+
+    php56:
+        image: mikolatero/php5.6-fpm-alpine
+        container_name: php56
+        restart: always
+        ports: 
+            - "9503:9000"
+        environment: 
+            - TZ=${TZ}
+        volumes:
+            - ${APP_PATH}:/www
+            - ${PHP56_CONF_FILE}:/etc/php5/cli/php.ini
+            - ${PHP56_LOG_DIR}:/usr/local/var/log
+            - ${DATA_DIR}:/data
+        networks: 
+            - default
 
 networks: 
-    xiaoe_net:
-        name: xiaoe_net
-        driver: bridge
+    default:
