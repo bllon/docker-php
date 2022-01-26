@@ -1,4 +1,10 @@
 # docker-php
+## 启动
+> docker-compose up -d
+
+## 删除
+> docker-compose down
+
 ## docker的php+nginx环境
 > php5.6.4
 
